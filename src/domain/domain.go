@@ -14,10 +14,10 @@ type Part struct {
 }
 
 type ChatRequestPayload struct {
-	Input string `json:"input"`
+	Question string `json:"question" binding:"required"`
 }
 
 type ChatResponse struct {
-	Input  string `json:"input"`
-	Output string `json:"output"`
+	Question string `json:"question"`
+	Answer   string `json:"answer"`
 }
