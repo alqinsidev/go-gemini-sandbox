@@ -7,10 +7,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-const (
-	InformationPath = "src/pattern.json"
-)
-
 type (
 	Repository struct {
 		db *sql.DB
