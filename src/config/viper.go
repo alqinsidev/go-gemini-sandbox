@@ -1,21 +1,21 @@
 package config
 
 import (
-	"log"
+	"os"
 
 	"github.com/spf13/viper"
 )
 
-func InitViper() *viper.Viper {
-	config := viper.New()
-
-	config.SetConfigFile(".env")
-	config.AddConfigPath("../")
-
-	err := config.ReadInConfig()
-	if err != nil {
-		log.Fatal("Cannot read ENV file")
+func InitViper() error {
+	var configFile = os.Getenv("APP_ENV_FILE")
+	if os.Getenv("APP_ENV_FILE") == "" {
+		configFile = ".env"
 	}
 
-	return config
+	viper.SetConfigFile(configFile)
+	viper.AutomaticEnv()
+
+	var err = viper.ReadInConfig()
+
+	return err
 }

@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/alqinsidev/go-gemini-sandbox/src/config"
+	"github.com/spf13/viper"
 )
 
 func main() {
@@ -16,6 +17,6 @@ func main() {
 		DB:    app.DB,
 	})
 
-	appPort := fmt.Sprintf(`:%s`, app.Viper.GetString("APP_PORT"))
+	appPort := fmt.Sprintf(`:%s`, viper.GetString("APP_PORT"))
 	app.Gin.Run(appPort)
 }

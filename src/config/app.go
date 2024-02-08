@@ -3,6 +3,7 @@ package config
 import (
 	"context"
 	"database/sql"
+	"log"
 
 	"github.com/alqinsidev/go-gemini-sandbox/src/delivery/http"
 	"github.com/alqinsidev/go-gemini-sandbox/src/delivery/http/route"
@@ -25,16 +26,19 @@ type AppBootstrapConfig struct {
 
 func Init() *AppBootstrapConfig {
 	ctx := context.Background()
-	viper := InitViper()
+	err := InitViper()
+	if err != nil {
+		log.Fatalln(err.Error())
+	}
+
 	gin := InitGin()
-	genAI := InitGenAIClient(ctx, viper)
-	DB := InitMySQL(viper)
+	genAI := InitGenAIClient(ctx)
+	DB := InitMySQL()
 
 	return &AppBootstrapConfig{
 		Ctx:   ctx,
 		Gin:   gin,
 		GenAI: genAI,
-		Viper: viper,
 		DB:    DB,
 	}
 

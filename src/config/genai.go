@@ -9,7 +9,7 @@ import (
 	"google.golang.org/api/option"
 )
 
-func InitGenAIClient(ctx context.Context, viper *viper.Viper) *genai.Client {
+func InitGenAIClient(ctx context.Context) *genai.Client {
 	apiKey := viper.GetString("API_KEY")
 
 	client, err := genai.NewClient(context.Background(), option.WithAPIKey(apiKey))

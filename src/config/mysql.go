@@ -10,7 +10,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-func InitMySQL(viper *viper.Viper) *sql.DB {
+func InitMySQL() *sql.DB {
 	host := viper.GetString("MYSQL_HOST")
 	port := viper.GetString("MYSQL_PORT")
 	username := viper.GetString("MYSQL_USER")
