@@ -9,13 +9,13 @@ Gemini AI Sandbox is an application designed to manage pairs of questions and an
 * [MySQL](https://www.mysql.com/) as the Database
 * [Generative AI SDK](https://github.com/google/generative-ai-go) package from Google for interacting with Gemini AI
 
-### How to Run
+## How to Run
 
-#### Prerequisite
+### Prerequisite
 
 Ensure you have a [Google Cloud Project API Key](https://makersuite.google.com/app/apikey).
 
-#### Running on Docker
+### Running on Docker
 
 > **Note**: Update the `API_KEY` in the [docker-compose.yml](https://github.com/alqinsidev/go-gemini-sandbox/blob/main/docker-compose.yml) with your API key.
 
@@ -33,31 +33,32 @@ Follow these steps to run Gemini AI Sandbox as a Docker container:
     docker exec gemini-api "./migration"
     ```
 
-### Populating Information
+## Populating Information
 
 Before using the [Chat API](#chat), you need to set pairs of questions and answers using the [Informations API](#informations).
 
 To do this, provide a list of questions along with their expected answers.
 
-#### Use Case
+#### Usecase
 
 For example, if you want Gemini to answer questions about personal information, you need to set up relevant information.
 
 ##### Information Example
 
 Store this pair of questions and expected answers using [Informations API](#informations):
+```plaintext
+Question: What is your name?
 
-**Question**: What is your name?
-
-**Answer**: John Doe
+Answer: John Doe
+```
 
 The expected behavior for Gemini when using the [Chat API](#chat) after storing this information would be:
 
 ```plaintext
-// Question
+// Your Question
 What is your last name?
 
-// Answer
+// Gemini Reply
 Doe
 ```
 
