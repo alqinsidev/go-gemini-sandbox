@@ -2,48 +2,32 @@
 
 Gemini AI Sandbox is an application designed to manage pairs of questions and answers utilized by Gemini AI to provide responses based on predefined information.
 
-### Tech Used
+## Tech Used
 
 * [GO](https://go.dev/) as the programming language
 * [Gin](https://gin-gonic.com/) as the HTTP Framework
 * [MySQL](https://www.mysql.com/) as the Database
 * [Generative AI SDK](https://github.com/google/generative-ai-go) package from Google for interacting with Gemini AI
 
-## How to Run
+## How It's Work
+![workflow](https://github.com/alqinsidev/go-gemini-sandbox/blob/main/workflow.png?raw=true)
 
-### Prerequisite
-
-Ensure you have a [Google Cloud Project API Key](https://makersuite.google.com/app/apikey).
-
-### Running on Docker
-
-> **Note**: Update the `API_KEY` in the [docker-compose.yml](https://github.com/alqinsidev/go-gemini-sandbox/blob/main/docker-compose.yml) with your API key.
-
-Follow these steps to run Gemini AI Sandbox as a Docker container:
-
-1. Start the Docker container stack by executing this command:
-
-    ```bash
-    docker-compose up -d
-    ```
-
-2. After the container has started, run the database migration with this command:
-
-    ```bash
-    docker exec gemini-api "./migration"
-    ```
+1. **User Asking**: Users submit questions via the `POST /chat` endpoint to the system.
+2. **Pre-stored Information**: The application querying stored information in the database.
+3. **Populated Information**: The database provides the stored information to the application.
+4. **Gemini Integration**: The application forwards the user's question, along with the retrieved information, to Gemini Pro.
+5. **Gemini Response**: Gemini Pro generates an answer to the user's question based on the provided information.
+6. **User Response**: Finally, the user receives the answer to their question.
 
 ## Populating Information
 
 Before using the [Chat API](#chat), you need to set pairs of questions and answers using the [Informations API](#informations).
 
-To do this, provide a list of questions along with their expected answers.
-
-#### Usecase
+### Usecase
 
 For example, if you want Gemini to answer questions about personal information, you need to set up relevant information.
 
-##### Information Example
+### Information Example
 
 Store this pair of questions and expected answers using [Informations API](#informations):
 ```plaintext
@@ -58,10 +42,33 @@ The expected behavior for Gemini when using the [Chat API](#chat) after storing 
 // Your Question
 What is your last name?
 
-// Gemini Reply
+// Gemini Answer
 Doe
 ```
 
+## How to Run
+
+### Prerequisite
+
+Ensure you have a [Google Cloud Project API Key](https://makersuite.google.com/app/apikey).
+
+### Running on Docker
+
+> **Note**: Update the `API_KEY` in the [docker-compose.yml](https://github.com/alqinsidev/go-gemini-sandbox/blob/main/docker-compose.yml) with your API key.
+
+Follow these steps to run Gemini AI Sandbox as a Docker container:
+
+#### Start Docker Container
+
+```bash
+docker-compose up -d
+```
+
+#### Run the Migration
+
+```bash
+docker exec gemini-api "./migration"
+```
 
 ## API
 
