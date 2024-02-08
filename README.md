@@ -2,14 +2,19 @@
 Application that managing pairs of Question and Answer that used by Gemini AI to provide answer based on information that we set before.
 
 ## Tech Used
-* GO as a programming language
-* Gin as HTTP Framework
-* MySQL as Database
-* genai Package from google to interact with Gemini
+* [GO](https://go.dev/) as a programming language
+* [Gin](https://gin-gonic.com/) as HTTP Framework
+* [MySQL](https://www.mysql.com/) as Database
+* [Generative AI SDK](https://github.com/google/generative-ai-go) package from google to interact with Gemini AI
 
 ## How to Run
 
-> Make sure you change the `API_KEY` from `docker-compose.yml` into your `API_KEY` (please refer to this: [create google cloud project api key](https://makersuite.google.com/app/apikey))
+### Prequesite
+* [Google Cloud Project API Key](https://makersuite.google.com/app/apikey)
+
+### Running in Docker
+
+> **NOTE**: Make sure you change the `API_KEY` on the [docker-compose.yml](https://github.com/alqinsidev/go-gemini-sandbox/blob/main/docker-compose.yml) into your `API_KEY`
 
 You can run this as a docker container by following this step:
 
