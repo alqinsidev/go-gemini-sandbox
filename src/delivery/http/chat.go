@@ -22,7 +22,7 @@ func (h *Handler) GetChatResponse(ctx *gin.Context) {
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{
 			"success": false,
-			"message": err,
+			"message": err.Error(),
 		})
 		return
 	}
