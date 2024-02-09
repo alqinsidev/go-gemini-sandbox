@@ -97,7 +97,7 @@ Store new pair of question and answer used later by gemini to provide an answer
 }
 ```
 
-##### Response - 200
+##### Response - 201
 
 ```json
 {
