@@ -32,7 +32,7 @@ func (h *Handler) InsertInformation(ctx *gin.Context) {
 		"success": true,
 		"data":    information,
 	}
-	ctx.JSON(http.StatusOK, response)
+	ctx.JSON(http.StatusCreated, response)
 }
 
 func (h *Handler) EditInformation(ctx *gin.Context) {
